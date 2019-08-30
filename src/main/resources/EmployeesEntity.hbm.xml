@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="models.EmployeesEntity" table="employees" schema="company">
+        <id name="id">
+            <column name="id" sql-type="int(11)"/>
+        </id>
+        <property name="firstName">
+            <column name="first_name" sql-type="varchar(20)" length="20"/>
+        </property>
+        <property name="lastName">
+            <column name="last_name" sql-type="varchar(20)" length="20"/>
+        </property>
+        <property name="middleName">
+            <column name="middle_name" sql-type="varchar(20)" length="20"/>
+        </property>
+        <property name="adress">
+            <column name="adress" sql-type="varchar(50)" length="50"/>
+        </property>
+        <property name="birthday">
+            <column name="birthday" sql-type="date"/>
+        </property>
+        <property name="comment">
+            <column name="comment" sql-type="varchar(50)" length="50" not-null="true"/>
+        </property>
+        <many-to-one name="positionsByPositionId" class="models.PositionsEntity">
+            <column name="position_id"/>
+        </many-to-one>
+        <many-to-one name="scheduleByScheduleId" class="models.ScheduleEntity">
+            <column name="schedule_id"/>
+        </many-to-one>
+        <set name="phonesById" inverse="true">
+            <key>
+                <column name="employee_id"/>
+            </key>
+            <one-to-many not-found="ignore" class="models.PhonesEntity"/>
+        </set>
+    </class>
+</hibernate-mapping>

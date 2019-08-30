@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="connection.url">jdbc:mysql://localhost:3306/company?serverTimezone=UTC&amp;UseUnicode=true&amp;characterEncoding=utf-8</property>
+    <property name="connection.username">root</property>
+    <property name="connection.password">qazx112</property>
+    <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+    <property name="hibernate.connection.CharSet">UTF-8</property>
+    <property name="hibernate.connection.characterEncoding">UTF-8</property>
+    <property name="hibernate.connection.useUnicode">true</property>
+    <!-- SQL dialect -->
+    <property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
+
+    <!-- show the queries prepared by Hibernate-->
+    <property name="show_sql">true</property>
+    <mapping resource="EmployeesEntity.hbm.xml"/>
+    <mapping resource="PhonesEntity.hbm.xml"/>
+    <mapping resource="PositionsEntity.hbm.xml"/>
+    <mapping resource="ScheduleEntity.hbm.xml"/>
+
+</session-factory>
+</hibernate-configuration>

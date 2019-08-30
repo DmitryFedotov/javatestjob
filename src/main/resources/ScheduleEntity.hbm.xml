@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="models.ScheduleEntity" table="schedule" schema="company">
+        <id name="id">
+            <column name="id" sql-type="int(11)"/>
+        </id>
+        <property name="shifts">
+            <column name="shifts" sql-type="varchar(10)" length="10"/>
+        </property>
+        <property name="workTimeHours">
+            <column name="work_time" sql-type="int(11)"/>
+        </property>
+        <set name="employeesById" inverse="true">
+            <key>
+                <column name="schedule_id"/>
+            </key>
+            <one-to-many not-found="ignore" class="models.EmployeesEntity"/>
+        </set>
+    </class>
+</hibernate-mapping>

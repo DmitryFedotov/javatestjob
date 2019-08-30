@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="models.PhonesEntity" table="phones" schema="company">
+        <id name="id">
+            <column name="id" sql-type="int(11)"/>
+        </id>
+        <property name="number">
+            <column name="number" sql-type="varchar(11)" length="11"/>
+        </property>
+        <property name="type">
+            <column name="type" sql-type="varchar(20)" length="20"/>
+        </property>
+        <many-to-one name="employeesByEmployeeId" class="models.EmployeesEntity">
+            <column name="employee_id"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>
